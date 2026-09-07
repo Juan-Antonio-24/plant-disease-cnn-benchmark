@@ -1,0 +1,31 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
+# Pytest
+.pytest_cache/
+
+# Datasets
+dataset/*
+!dataset/dataset_preparation.ipynb
+
+# Checkpoints
+model/*/*_checkpoint.pth
