@@ -38,25 +38,32 @@ recognition?
 
 ## Deep Learning
 
-- Python
-- PyTorch
-- Torchvision
-- CUDA
+- Python (`3.12.3`)
+- PyTorch (`torch==2.14.0`)
+- Torchvision (`torchvision==0.29.0`)
+- CUDA (`13.0`)
 
 ## Data Science
 
-- NumPy
-- Pandas
-- Scikit-learn
+- NumPy (`numpy==2.5.2`)
+- Pandas (`pandas==3.0.5`)
+- Scikit-learn (`scikit-learn==1.9.0`)
 
 ## Visualization
 
-- Matplotlib
-- Seaborn
+- Matplotlib (`matplotlib==3.11.1`)
+- Seaborn (`seaborn==0.13.2`)
 
 ## Model Analysis
 
-- THOP
+- THOP (`thop==0.1.1.post2209072238`)
+
+## Utilities
+
+- Pillow (`Pillow==12.3.0`)
+- PyYAML (`PyYAML==6.0.3`)
+- tqdm (`tqdm==4.70.0`)
+- requests (`requests==2.34.2`)
 
 ---
 
@@ -284,11 +291,15 @@ at the best validation Macro F1 epoch for each architecture.
 
 # Results Analysis
 
+In response to the research question, the benchmark indicates that **EfficientNet-B0** and **MobileNetV3 Large** provide the most favorable trade-off for this specific task. Both architectures achieved predictive performance highly comparable to the heaviest models (Macro F1 > 99.7%) while requiring only a fraction of the computational cost (< 5M parameters, < 0.6 GFLOPs).
+
 The experiments show that all evaluated architectures achieved high
 classification performance on the selected PlantVillage benchmark.
 
 However, increasing model depth or capacity did not produce a monotonic
-improvement in Macro F1.
+improvement in Macro F1. For instance, architectures like ResNet34 reached
+the peak predictive performance (99.7995% Macro F1) but at a significantly
+higher computational expense (4.8 GFLOPs).
 
 The differences in predictive performance between architectures were
 relatively small, while their computational requirements varied
@@ -343,7 +354,7 @@ architecture.
 
 ### Epochs to Convergence
 
-![Epochs to convergence](results/train_val_graphs/epochs_to_converge.png)
+![Epochs to convergence](results/train_val_graphs/best_epoch_by_architecture.png)
 
 ### Train-Validation Macro F1 Gap
 
@@ -361,16 +372,19 @@ architecture.
 
 ## Training Behavior Analysis
 
-Convergence speed varied substantially across architectures, ranging from
-12 epochs (ResNet101) to 110 epochs (MobileNetV3 Small) to reach their
-best validation Macro F1. This variation was not correlated with final
-performance: architectures that converged quickly did not necessarily
-achieve better results, and vice versa.
+The number of epochs required to reach the best validation Macro F1 varied
+substantially across architectures, ranging from 12 epochs for ResNet101 to
+110 epochs for MobileNetV3 Small. This variation did not show a consistent
+relationship with final test performance: architectures reaching their best
+validation performance earlier did not necessarily achieve higher test
+performance, and vice versa.
 
-The train-validation F1 gap also varied independently of both convergence
-speed and final performance, suggesting that generalization behavior
-under this fixed training configuration is architecture-dependent rather
-than a simple function of model capacity.
+The train-validation Macro F1 gap also varied across architectures and did
+not show a consistent relationship with either the number of epochs required
+to reach the best validation Macro F1 or final test performance. These
+differences indicate that training and validation behavior can vary
+considerably across architectures under the fixed training configuration
+used in this benchmark.
 
 ---
 
@@ -432,7 +446,6 @@ plant-disease-cnn-benchmark/
 │   └── train_val_graphs/
 │
 ├── requirements.txt
-├── requirements-dev.txt
 ├── .gitignore
 └── README.md
 ```
@@ -441,6 +454,30 @@ plant-disease-cnn-benchmark/
 > files generated during training for all architectures are also excluded
 > for the same reason. The remaining trained model weights that comply
 > with GitHub's file size limits are included.
+
+---
+
+## Activate virtual environment
+
+### Linux / macOS
+
+```bash
+source .venv/bin/activate
+```
+
+### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+---
+
+## Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
