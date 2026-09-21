@@ -246,6 +246,9 @@ Computational characteristics are evaluated using:
 
 ## Test Results
 
+The following table summarizes the test performance and computational
+characteristics obtained for each evaluated architecture.
+
 | Model | Accuracy | Macro F1 | Parameters (M) | GFLOPs | Model Size (MB) |
 |---|---:|---:|---:|---:|---:|
 | ResNet18 | 99.7789% | 99.7107% | 11.20 | 2.382 | 42.79 |
@@ -258,6 +261,24 @@ Computational characteristics are evaluated using:
 | EfficientNet-B0 | 99.7973% | 99.7519% | 4.06 | 0.540 | 15.78 |
 | EfficientNet-B1 | 99.6868% | 99.6153% | 6.56 | 0.796 | 25.47 |
 | EfficientNet-B2 | 99.7605% | 99.7124% | 7.75 | 0.915 | 30.04 |
+
+## Training and Validation Results
+
+The following table summarizes the training and validation metrics recorded
+at the best validation Macro F1 epoch for each architecture.
+
+| Model | Best Epoch | Train Loss | Train Accuracy | Train Macro Precision | Train Macro Recall | Train Macro F1 | Val Loss | Val Accuracy | Val Macro Precision | Val Macro Recall | Val Macro F1 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| ResNet18 | 55 | 0.707548 | 99.907896% | 99.903039% | 99.907417% | 99.905176% | 0.711020 | 99.687959% | 99.557337% | 99.482408% | 99.507075% |
+| ResNet34 | 73 | 0.678019 | 99.988487% | 99.989005% | 99.987852% | 99.988420% | 0.681462 | 99.834802% | 99.783926% | 99.652242% | 99.713531% |
+| ResNet50 | 53 | 0.684625 | 99.983882% | 99.983873% | 99.985497% | 99.984675% | 0.687182 | 99.853157% | 99.826054% | 99.808537% | 99.816746% |
+| ResNet101 | 12 | 0.714386 | 99.806581% | 99.780805% | 99.784506% | 99.782510% | 0.710172 | 99.761380% | 99.707766% | 99.584954% | 99.639644% |
+| MobileNetV2 | 101 | 0.721066 | 99.806581% | 99.792964% | 99.782242% | 99.787541% | 0.716841 | 99.614537% | 99.558195% | 99.359619% | 99.451389% |
+| MobileNetV3 Small | 110 | 0.729248 | 99.730595% | 99.715049% | 99.712530% | 99.713673% | 0.727698 | 99.247430% | 99.220367% | 99.043335% | 99.120345% |
+| MobileNetV3 Large | 70 | 0.699268 | 99.917106% | 99.903932% | 99.915412% | 99.909609% | 0.700844 | 99.687959% | 99.670495% | 99.517694% | 99.590050% |
+| EfficientNet-B0 | 76 | 0.706433 | 99.873357% | 99.865584% | 99.872955% | 99.869218% | 0.700410 | 99.743025% | 99.657033% | 99.521182% | 99.584403% |
+| EfficientNet-B1 | 96 | 0.705905 | 99.776647% | 99.744550% | 99.752051% | 99.748214% | 0.694540 | 99.761380% | 99.704293% | 99.580923% | 99.635532% |
+| EfficientNet-B2 | 58 | 0.705478 | 99.850330% | 99.826885% | 99.837886% | 99.832337% | 0.693464 | 99.706314% | 99.673925% | 99.492562% | 99.578531% |
 
 ---
 
